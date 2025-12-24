@@ -520,15 +520,22 @@ body.nav-active { overflow: hidden; }
   transition: var(--transition-2);
 }
 
-.preload > * { transition: var(--transition-1); }
+.preload > * { 
+  transition: var(--transition-1); 
+}
 
-.preload.loaded > * { opacity: 0; }
+.preload.loaded > * { 
+  opacity: 0; 
+}
 
 .preload.loaded {
   transition-delay: 250ms;
   transform: translateY(100%);
 }
 
+/* =======================
+   LOADING CIRCLE
+   ======================= */
 .circle {
   width: 112px;
   height: 112px;
@@ -544,6 +551,9 @@ body.nav-active { overflow: hidden; }
   100% { transform: rotate(1turn); }
 }
 
+/* =======================
+   LOADING TEXT
+   ======================= */
 .preload .text {
   background-image: var(--loading-text-gradient);
   background-size: 500%;
@@ -553,6 +563,7 @@ body.nav-active { overflow: hidden; }
   text-transform: uppercase;
   letter-spacing: 16px;
   padding-inline-start: 16px;
+  text-align: center;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   -webkit-background-clip: text;
@@ -563,6 +574,49 @@ body.nav-active { overflow: hidden; }
 @keyframes loadingText {
   0% { background-position: 100%; }
   100% { background-position: 0%; }
+}
+
+/* =======================
+   RESPONSIVE ADJUSTMENTS
+   ======================= */
+
+/* Tablets */
+@media (max-width: 768px) {
+  .preload .text {
+    font-size: calc(1.5rem + 2vw);
+    letter-spacing: 8px;
+    padding-inline-start: 8px;
+  }
+
+  .circle {
+    width: 90px;
+    height: 90px;
+    margin-block-end: 30px;
+  }
+}
+
+/* Mobile phones */
+@media (max-width: 480px) {
+  .preload .text {
+    font-size: 1.5rem;
+    letter-spacing: 4px;
+    padding-inline-start: 4px;
+  }
+
+  .circle {
+    width: 70px;
+    height: 70px;
+    margin-block-end: 20px;
+  }
+}
+
+/* Very small devices */
+@media (max-width: 360px) {
+  .preload .text {
+    font-size: 1.3rem;
+    letter-spacing: 2px;
+    padding-inline-start: 2px;
+  }
 }
 
 
@@ -1056,8 +1110,9 @@ body.nav-active { overflow: hidden; }
 
 /* SPECIAL DISH */
 
+/* SPECIAL DISH */
+
 /* Wrapper for all special dishes */
- /* WRAPPER stays centered but fills wide screens */
 .special-dishes-wrapper {
   display: flex;
   flex-direction: column;
@@ -1066,35 +1121,36 @@ body.nav-active { overflow: hidden; }
   max-width: 1400px;
   margin: auto;
   padding: 2rem;
-  background: black; /* keep black background */
+  background: black;
 }
 
 /* EACH CARD */
 .special-dish {
   display: flex;
   flex-direction: column;
-  background: #111;      /* dark grey card against black bg */
+  background: #111;
   border-radius: 12px;
   overflow: hidden;
   align-items: stretch;
   box-shadow: 0 4px 15px rgba(0,0,0,0.5);
 }
 
-/* IMAGE — bigger, clearer */
+/* IMAGE */
 .special-dish-banner {
   width: 100%;
-  height: 260px;          /* increased clarity */
+  height: 240px;            /* 🔽 reduced height */
   overflow: hidden;
 }
 
 .special-dish-banner img {
   width: 100%;
   height: 100%;
-  object-fit: cover;      /* shows image clearly */
+  object-fit: cover;
+  object-position: center;
   display: block;
 }
 
-/* CONTENT — wider, bigger, readable */
+/* CONTENT */
 .special-dish-content {
   padding: 3rem;
   flex: 1;
@@ -1102,25 +1158,24 @@ body.nav-active { overflow: hidden; }
   flex-direction: column;
   justify-content: flex-start;
   gap: 1.3rem;
-  color: white;            /* readable on dark background */
-  /* font-size: 1.1rem; */
+  color: white;
 }
 
-/* DESKTOP - side by side */
+/* DESKTOP — side by side (layout preserved) */
 @media (min-width: 768px) {
   .special-dish {
     flex-direction: row;
-    min-height: 400px;        /* makes layout strong */
+    min-height: 320px;      /* 🔽 reduced from 400px */
   }
 
   .special-dish-banner {
-    width: 55%;               /* 👈 bigger image */
+    width: 65%;             /* ↔️ wider image */
     height: auto;
   }
 
   .special-dish-content {
-    width: 45%;               /* 👈 big content section */
-    padding: 3.5rem;
+    width: 35%;
+    padding: 3rem;
     text-align: left;
   }
 
@@ -1133,7 +1188,7 @@ body.nav-active { overflow: hidden; }
 /* MOBILE — stacked layout */
 @media (max-width: 767px) {
   .special-dish-banner {
-    height: 300px;
+    height: 220px;          /* 🔽 reduced mobile height */
   }
 
   .special-dish-content {
@@ -1141,6 +1196,7 @@ body.nav-active { overflow: hidden; }
     padding: 2rem;
   }
 }
+
 
 
 
